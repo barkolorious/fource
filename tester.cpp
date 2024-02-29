@@ -1,11 +1,17 @@
 #include "class.cpp"
 using namespace std;
 #include <chrono>
+#include <ctime>
 using namespace std::chrono;
 
 int main(){
-  int n, totalGenerateMatrixRunTime = 0;
+  int n, totalGenerateMatrixRunTime = 0, testCount;
+  auto timenow = system_clock::to_time_t(system_clock::now()); 
+  cout << ctime(&timenow) << endl; 
+  cout << "N         :\t";
   cin >> n; n--;
+  cout << "Test Count:\t";
+  cin >> testCount;
   fource deneme(n);
 
   auto start = high_resolution_clock::now();
@@ -15,8 +21,9 @@ int main(){
   n++;
   string fileName = "matrix"; fileName += to_string(n); fileName += ".dat";
   deneme.saveMatrix(fileName.c_str());
+  // deneme.loadMatrix(fileName.c_str());
 
-  int testCount = 10000, totalEncryptRunTime = 0, totalSolveRunTime = 0, totalRightAnswers = 0;
+  int totalEncryptRunTime = 0, totalSolveRunTime = 0, totalRightAnswers = 0;
   for(int test = 0; test < testCount; test++){
     int len = rand() % n;
     if(len == 0) len++;
@@ -44,4 +51,16 @@ int main(){
   cout << "Ortalama Şifreleme Süresi   :\t" << totalEncryptRunTime / testCount << "ms" << endl;
   cout << "Ortalama Deşifre Etme Süresi:\t" << totalSolveRunTime / testCount << "ms" << endl;
   cout << "Anahtar Üretme Süresi       :\t" << totalGenerateMatrixRunTime  << "ms" << endl;
+  fstream fout("sonuc.txt", ios::out);
+  fout << "N                           :\t" << n << endl;
+  fout << "Doğru Cevap Oranı           :\t" << totalRightAnswers << "/" << testCount << endl;
+  fout << "Ortalama Şifreleme Süresi   :\t" << totalEncryptRunTime / testCount << "ms" << endl;
+  fout << "Ortalama Deşifre Etme Süresi:\t" << totalSolveRunTime / testCount << "ms" << endl;
+  fout << "Anahtar Üretme Süresi       :\t" << totalGenerateMatrixRunTime  << "ms" << endl;
+  
+  // string str; cin >> str;
+  // fource deneme(str);
+  // deneme.encrypt();
+  // if(deneme.solve() == str) cout << "lets go\n";
+  // cout << "\"" << deneme.solve() << "\"" << endl;
 }
