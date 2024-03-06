@@ -8,7 +8,7 @@ $$
 \mathrm{DFT} [f_i] (k)=\sum_{n=0}^{N-1}f_i(n)\cdot e^{-\frac{i2\pi}{N}kn}
 $$
 
-4. Create a key matrix $A$ such that each column of $A$ is the $\mathrm{DFT}$ of $f_{\mathrm{colum}}$.
+4. Create a key matrix $\textbf{A}$ such that each column of $\textbf{A}$ is the $\mathrm{DFT}$ of $f_{\mathrm{colum}}$.
 
 $$
 \textbf{A}=\begin{bmatrix}
@@ -59,4 +59,5 @@ $$
 
 # Decrypting Data
 
-1. 
+1. Calculate $\textbf{b}$ using the equation $\textbf{A}\textbf{x}=\textbf{b}$.
+2. 
