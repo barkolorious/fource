@@ -37,10 +37,10 @@ class fource{
 
     fource(string);
     fource(int);
-    void newMessage(string);
+    void newData(string);
     void generateMatrix();
     void encrypt(); 
-    string solve();
+    string decrypt();
     void write(const char*);
     void read(const char*);
     void saveMatrix(const char*);
@@ -57,7 +57,12 @@ fource::fource(int x = 255){
   N = msb(x);
 }
 
-void fource::newMessage(string message){
+/**
+ * @brief Add a new data to encrypt to the ```fource``` object.
+ * @param message Type: ```string``` - Data to be put in the ```fource``` object.
+ * @return ```void```
+ */
+void fource::newData(string message){
   data = message;
   if(N <= data.length()){
     N = msb(data.length());
@@ -65,9 +70,12 @@ void fource::newMessage(string message){
   }
 }
 
+/**
+ * @brief Generate the matrix for future encryption usage.
+ * @param void
+ * @return ```void```
+ */
 void fource::generateMatrix(){
-  //Anahtar oluşturma kodu
-
   matrix f(vector(zero, N), N);
   dis.reset();
   for(int c = 0; c < N; c++){
@@ -91,8 +99,12 @@ void fource::generateMatrix(){
   loadedMatrix = true;
 }
 
+/**
+ * @brief Calculate the inverse of the matrix ```M```
+ * @param M Type: ```valarray<valarray<complex<double>>>``` - Matrix to calculate the inverse of.
+ * @return ```valarray<valarray<complex<double>>>```  - Inverse of matrix ```M```.
+ */
 matrix fource::inverse(matrix M){
-  //Matris'in tersini alma kodu
   const int N = M.size();
   matrix id(vector(zero, N), N);
   for(int i = 0; i < N; i++) id[i][i] = number(1, 0);
@@ -119,14 +131,23 @@ matrix fource::inverse(matrix M){
   return id;
 }
 
+/**
+ * @brief Calculate two times the most significant bit of ```x```
+ * @param x Type: ```int``` - Number to use
+ * @return Two times the most significant bit of ```x```
+ */
 int fource::msb(int x){
   int n = 0;
   while(x >> n) n++;
   return 1 << n;
 }
 
+/**
+ * @brief Take the discrete Fourier transform of ```f``` using FFT.
+ * @param f Type: ```valarray<complex<double>>``` - Funtion to take the discrete Fourier transform of.
+ * @return ```valarray<complex<double>>``` - Discrete Fourier transform of function ```f```
+ */
 vector fource::fft(vector f){
-  //Fast Fourier Transform - Hızlı Fourier Dönüşümü
   if(f.size() == 1) return f;
 
   const int n = f.size();
@@ -149,8 +170,12 @@ vector fource::fft(vector f){
   return F;
 }
 
+/**
+ * @brief Encrypt the data from ```data```. 
+ * @param void
+ * @return ```void```
+ */
 void fource::encrypt(){
-  //Şifreleme kodu
   if(!loadedMatrix) 
     this->generateMatrix();
 
@@ -166,6 +191,11 @@ void fource::encrypt(){
     code[r] = (invA[r] * B).sum();
 }
 
+/**
+ * @brief Take the inverse discrete Fourier transform of ```F``` using IFFT. IFFT[F] = ((FFT[F*])*) / N
+ * @param F Type: ```valarray<complex<double>>``` - Function to take the inverse discrete Fourier transform of.
+ * @return ```valarray<complex<double>>``` - Inverse discrete Fourier transform of function ```F``` 
+ */
 vector fource::ifft(vector F){
   const int N = F.size();
   for(number& z : F) z = conj(z);
@@ -175,8 +205,12 @@ vector fource::ifft(vector F){
   return f;
 }
 
-string fource::solve(){
-  //Deşifreleme kodu
+/**
+ * @brief Decrypt the data from ```code```.
+ * @param void
+ * @return ```string``` - Decrypted data
+ */
+string fource::decrypt(){
   vector B(zero, N);
   for(int r = 0; r < N; r++) 
     B[r] = (A[r] * code).sum();
@@ -191,6 +225,11 @@ string fource::solve(){
   return m;
 }
 
+/**
+ * @brief Write ```code``` to file ```file```
+ * @param file Type: ```const char*``` - Path of the file where ```code``` will be saved. ```code``` will be saved in binary encoding.
+ * @return ```void```
+ */
 void fource::write(const char* file){
   ofstream fout(file, ios::out | ios::binary);
   int size = code.size();
@@ -203,6 +242,11 @@ void fource::write(const char* file){
   fout.close();
 }
 
+/**
+ * @brief Read ```code``` from file ```file```
+ * @param file Type: ```const char*``` - Path of the file where ```code``` will be read from. The file needs to be in binary encoding.
+ * @return ```void```
+ */
 void fource::read(const char* file){
   ifstream fin(file, ios::in | ios::binary);
   int size;
@@ -218,6 +262,11 @@ void fource::read(const char* file){
   fin.close();
 }
 
+/**
+ * @brief Save key matrices ```A``` and ```invA``` to file ```file```
+ * @param file Type: ```const char*``` - Path of the file where ```A``` and ```invA``` will be saved. ```A``` and ```invA``` will be saved in binary encoding.
+ * @return ```void```
+ */
 void fource::saveMatrix(const char* file){
   ofstream fout(file, ios::out | ios::binary);
   int size = A.size();
@@ -240,9 +289,9 @@ void fource::saveMatrix(const char* file){
 }
 
 /**
- * @brief $\sin(5t)$
- * 
- * @param file File path to load the ```A``` from.
+ * @brief Read key matrices ```A``` and ```invA``` from file ```file```
+ * @param file Type: ```const char*``` - Path of the file where ```A``` and ```invA``` will be read from. The file needs to be in binary encoding.
+ * @return ```void```
  */
 void fource::loadMatrix(const char* file){
   ifstream fin(file, ios::in | ios::binary);
@@ -270,15 +319,14 @@ void fource::loadMatrix(const char* file){
   fin.close();
 }
 
-
 /** 
- * @brief Will output ```cr```'s encrypted data to ```ostr```
+ * @brief Output ```cr```'s encrypted data to ```ostr```
  * @param ostr Type: ```ostream&``` - Output stream that will print ```cr```
  * @param cr Type: ```fource``` - FOURCE object to be outputed
  * @return ```ostr```
  **/
 ostream& operator<<(ostream& ostr, const fource& cr){
-  ostr << "\nMessage: " << cr.data << '\n';
+  ostr << "\nData: " << cr.data << '\n';
   ostr << showpos << fixed << setprecision(8);
   for(int i = 0; i < cr.code.size(); i++){
     ostr << "| " << setw(15) << left  << cr.code[i].real() 
@@ -288,16 +336,15 @@ ostream& operator<<(ostream& ostr, const fource& cr){
 }
 
 /**
- * @brief Will read ```istr```'s buffer as a new message for ```cr```
- * 
- * @param istr Input stream that will provide the new message
- * @param cr FOURCE object to be updated
+ * @brief Read ```istr```'s buffer as a new data for ```cr```
+ * @param istr Type: ```istream&``` - Input stream that will provide the new data
+ * @param cr Type: ```fource&``` - FOURCE object to be updated
  * @return ```istr``` 
  */
 istream& operator>>(istream& istr, fource& cr){
   string message;
   istr >> message;
-  cr.newMessage(message);
+  cr.newData(message);
   return istr;
 }
 
