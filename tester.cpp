@@ -1,4 +1,4 @@
-#include "fource.cpp"
+#include "fource.hpp"
 using namespace std;
 #include <chrono>
 #include <ctime>
