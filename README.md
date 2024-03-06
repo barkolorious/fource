@@ -5,54 +5,58 @@
 3. Take the $\mathrm{DFT}$ of $f_0, f_1, \cdots, f_{N-1}$.
 
 $$
-\mathrm{DFT}[f_i](k)=\sum_{n=0}^{N-1}f_i(n)\cdot e^{-\frac{i2\pi}{N}kn}
+\mathrm{DFT} [f_i] (k)=\sum_{n=0}^{N-1}f_i(n)\cdot e^{-\frac{i2\pi}{N}kn}
 $$
 
-1. Create a key matrix $A$ such that each column of $A$ is the $\mathrm{DFT}$ of $f_{\mathrm{colum}}$.
+4. Create a key matrix $A$ such that each column of $A$ is the $\mathrm{DFT}$ of $f_{\mathrm{colum}}$.
 
 $$
-A=\begin{bmatrix}
-\mathrm{DFT}[f_0](0) & \mathrm{DFT}[f_1](0) & \cdots & \mathrm{DFT}[f_{N-1}](0) \\
-\mathrm{DFT}[f_0](1) & \mathrm{DFT}[f_1](1) & \cdots & \mathrm{DFT}[f_{N-1}](1) \\
+\textbf{A}=\begin{bmatrix}
+\mathrm{DFT}[f_0] (0) & \mathrm{DFT}[f_1] (0) & \cdots & \mathrm{DFT}[f_{N-1}] (0) \\
+\mathrm{DFT}[f_0] (1) & \mathrm{DFT}[f_1] (1) & \cdots & \mathrm{DFT}[f_{N-1}] (1) \\
 \vdots & \vdots & \ddots & \vdots \\
-\mathrm{DFT}[f_0](N-1) & \mathrm{DFT}[f_1](N-1) & \cdots & \mathrm{DFT}[f_{N-1}](N-1) \\
+\mathrm{DFT}[f_0] (N-1) & \mathrm{DFT}[f_1] (N-1) & \cdots & \mathrm{DFT}[f_{N-1}] (N-1) \\
 \end{bmatrix}
 $$
 
 $$
-A_{ij}=\mathrm{DFT}[f_j](i)
+\textbf{A}_{ij}=\mathrm{DFT}[f_j] (i)
 $$
 
-1. Calculate $A^{-1}$ using Gauss-Jordan Method.
+5. Calculate $\textbf{A}^{-1}$ using Gauss-Jordan Method.
 
 # Encrypting Data
 
 1. Create a function $s(m)$ with the rule:
 
 $$
-s(m)(n)=\left\{\begin{matrix}
-\mathrm{len}(m) & : & n=0 \\
-m[(n-1) \mod \mathrm{len}(m) & : & n>0
-\end{matrix}\right.
+s(m)(n) = \begin{cases}
+\mathrm{len}(m) & : & n = 0 \\
+m\left[(n - 1) \mod \mathrm{len}(m) \right] & : & n > 0
+\end{cases}
 $$
 
-1. Define $\vec B$ with the $\mathrm{DFT}$ of $s(m)$.
+2. Define $\textbf{b}$ with the $\mathrm{DFT}$ of $s(m)$.
 
 $$
-\vec B = \left[\begin{matrix}
-\mathrm{DFT}[s(m)](0) \\
-\mathrm{DFT}[s(m)](1) \\
+\textbf{b} = \left[\begin{matrix}
+\mathrm{DFT}[s(m)] (0) \\
+\mathrm{DFT}[s(m)] (1) \\
 \vdots \\
-\mathrm{DFT}[s(m)](N-1) \\
+\mathrm{DFT}[s(m)] (N-1) \\
 \end{matrix}\right]
 $$
 
-1. Solve the equation $A\vec x=\vec B$ for $\vec x$. $\vec x$ is the encrypted data to store.
+3. Solve the equation $\textbf{A}\textbf{x}=\textbf{b}$ for $\textbf{x}$. $\textbf{x}$ is the encrypted data to store.
 
 $$
 \begin{array}{rcl}
-A\vec x & = & \vec B \\
-A^{-1} A \vec x & = & A^{-1} \vec B \\
-\vec x & = & A^{-1} \vec B
+\textbf{A}\textbf{x} & = & \textbf{b} \\
+\textbf{A}^{-1} \textbf{A} \textbf{x} & = & \textbf{A}^{-1} \textbf{b} \\
+\textbf{b} & = & \textbf{A}^{-1}\textbf{b}
 \end{array}
 $$
+
+#Decrypting Data
+
+1. 
