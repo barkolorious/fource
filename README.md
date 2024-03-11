@@ -102,5 +102,5 @@ $$
 
 $$
 \Large
-\forall i < \text{len}(m) : m_i = \textbf{S}_i
+\forall i < \text{len}(m) : m_i = \textbf{S}_{i+1}
 $$
