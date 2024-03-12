@@ -104,6 +104,6 @@ $$
 
 $$
 \Large
-\forall i < \text{len}(m) : m_i = \textbf{S}_{i+1}
+\forall i < \text{len}(m) : m[i] = \textbf{S}_{i+1}
 $$
 
