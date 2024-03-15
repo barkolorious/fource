@@ -5,7 +5,7 @@ Details for the algorithm is here.
 ## Producing a Key
 
 1. Let $N$ be a power of $2$ such that $N$ is bigger than the length of the longest word that’ll be encrypted.
-2. Create $N$ functions from $\mathbb{N}_{< N}$ to $\mathbb{C}$ ($f_0, f_1, \cdots, f_{N-1}$). There is no need for a rule for these functions.
+2. Create $N$ functions from $\mathbb{N}_ {< N}$ to $\mathbb{C}$ ($f_0, f_1, \cdots, f_{N-1}$). There is no need for a rule for these functions.
 3. Define $F_0, F_1, \cdots, F_{N-1}$ with the $\mathrm{DFT}$ of $f_0, f_1, \cdots, f_{N-1}$.
 
 $$
