@@ -5,9 +5,6 @@
 #include <iomanip>
 #include <fstream>
 
-std::random_device rd;
-std::mt19937 gen(rd());
-std::uniform_real_distribution<> dis(-(1e9+7), +(1e9+7));
 
 class fource{
   friend std::ostream &operator<<(std::ostream&, const fource&);
@@ -72,6 +69,10 @@ void fource::newData(std::string message){
  * @return ```void```
  */
 void fource::generateMatrix(){
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  std::uniform_real_distribution<> dis(-(1e9+7), +(1e9+7));
+
   std::valarray<std::valarray<std::complex<double>>> f(std::valarray<std::complex<double>>(zero, N), N);
   dis.reset();
   for(int c = 0; c < N; c++){
