@@ -15,17 +15,6 @@ $$
 
 4. Create a key matrix $\textbf{A}$ such that each column of $\textbf{A}$ is the $F_{\mathrm{colum}}$.
 
-<!--
-$$
-\large
-\textbf{A}=\begin{bmatrix}
-\mathrm{DFT}[f_0] (0) & \mathrm{DFT}[f_1] (0) & \cdots & \mathrm{DFT}[f_{N-1}] (0) \\
-\mathrm{DFT}[f_0] (1) & \mathrm{DFT}[f_1] (1) & \cdots & \mathrm{DFT}[f_{N-1}] (1) \\
-\vdots & \vdots & \ddots & \vdots \\
-\mathrm{DFT}[f_0] (N-1) & \mathrm{DFT}[f_1] (N-1) & \cdots & \mathrm{DFT}[f_{N-1}] (N-1) \\
-\end{bmatrix}
-$$-->
-
 $$
 \Large
 \textbf{A}=\begin{bmatrix}
@@ -56,11 +45,11 @@ m\left[(n - 1)\ \\%\  \mathrm{len}(m) \right] & : & n > 0
 \end{array} \right.
 $$
 
-*Note 1*: $\\%$ operator denotes the modulo operation. 
+> ***Note 1***: $\\%$ operator denotes the modulo operation. 
 
-*Note 2*: $\mathrm{len}(m)$ operator denotes the length of $m$.
+> ***Note 2***: $\mathrm{len}(m)$ operator denotes the length of $m$.
 
-*Note 3*: $m[i]$ operator is the zero-indexed $i$<sup>th</sup> element of $m$.
+> ***Note 3***: $m[i]$ operator is the zero-indexed $i$<sup>th</sup> element of $m$.
 
 2. Define $\textbf{b}$ with the $\mathrm{DFT}$ of $s(m)$.
 
@@ -76,21 +65,9 @@ $$
 
 3. Solve the equation $\textbf{A}\textbf{x}=\textbf{b}$ for $\textbf{x}$. $\textbf{x}$ is the encrypted data to store.
 
-<!--
-$$
-\large
-\begin{array}{rcl}
-\textbf{A}\textbf{x} & = & \textbf{b} \\
-\textbf{A}^{-1} \textbf{A} \textbf{x} & = & \textbf{A}^{-1} \textbf{b} \\
-\textbf{x} & = & \textbf{A}^{-1}\textbf{b}
-\end{array}
-$$
--->
-
 ## Decrypting Data
 
 1. Calculate $\textbf{b}$ using the equation $\textbf{A}\textbf{x}=\textbf{b}$.
-<!--2. Let $\textbf{v}_r$ be the element in the $r$th row of $\textbf{v}$.-->
 2. Define $\textbf{S}$ with the $\text{IDFT}$ of $\textbf{b}$
 
 $$
