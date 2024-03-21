@@ -16,7 +16,7 @@ $$
 \mathbb N^{< a} = \\{0, \cdots, a-1 \\}
 $$
 
-> ***Note:*** Every indexing in this page is done zero-indexed. This includes string indices, matrix indices and vector indices.
+> ***Note:*** Every indexing in this page is zero-indexed. This includes string indices, matrix indices and vector indices.
 ## Producing a Key
 
 1. $N = 2^k \text{ s.t. } [k \in \mathbb N ] \, \wedge \, [N > \max \{|m| : m \in D\}]$
