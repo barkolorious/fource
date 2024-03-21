@@ -7,5 +7,13 @@ A secure algorithm that uses both *Discrete Fourier Transformation* and *linear 
 * **The massive size of the key:** Lets assume that we chose $N$ to be equal to $2048$ which is $2^{11}$. Then the will have $N\times N = 2^{22}$ complex number in its entries. Therefore, $2^{23}$ real numbers in the range $(-10^9, 10^9)$. Choosing 1 true random in this range is nearly impossible and you will need $2^{23}$ correct answers to correctly guess the key (may i remind you that every false guess in the key yields a totally different decrypted data.).
 * **Flexibility of $s_m$:** Every implementation can use different rules for the $s_m$ function when encrypting the data which provides adding level of complexity.
 
+> ***Note:*** This library uses ```iostream```, ```complex```, ```valarray```, ```random```, ```iomanip``` and ```fstream``` libraries to work. Your compiler needs to have these libraries installed.
 
 To read further description for the algorithm [click here](Algorithm.md)
+
+#include <iostream>
+#include <complex>
+#include <valarray>
+#include <random>
+#include <iomanip>
+#include <fstream>
