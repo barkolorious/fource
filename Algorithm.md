@@ -1,6 +1,6 @@
 # Algorithm
 
-Details for the algorithm is here.
+Details for the algorithm is here. Here is [math version](Math.md) if you think you can handle that.
 
 ## Producing a Key
 
