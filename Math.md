@@ -1,17 +1,14 @@
 # Algorithm (Math Edition)
 
 $$
-\Large
 D \text{ is a database} \implies D \subseteq \{0,1\}^*
 $$
 
 $$
-\Large
 \text{DFT}[f] (k) = \sum_{n=0}^{N-1} f(n) \cdot e^{-\frac{i2\pi}Nkn}
 $$
 
 $$
-\Large
 \text{IDFT}[f] (n) = \frac1N \sum_{k=0}^{N-1} f(n) \cdot e^{\frac{i2\pi}Nkn}
 $$
 
