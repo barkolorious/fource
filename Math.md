@@ -30,6 +30,7 @@ $$
 ## Encrypting Data
  
 1. $s_m: \mathbb N \mapsto \mathbb C$
+2.
 
 $$
   s_m(n) = \left\\{ \begin{array}{ccl}
