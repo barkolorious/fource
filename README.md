@@ -9,7 +9,9 @@ A secure algorithm that uses both *Discrete Fourier Transformation* and *linear 
 
 > ***Note:*** This library uses ```iostream```, ```complex```, ```valarray```, ```random```, ```iomanip``` and ```fstream``` libraries to work. Your compiler needs to have these libraries installed.
 
-To read further description for the algorithm [click here](Algorithm.md)
+To read further description for the algorithm [click here](Algorithm.md).
+
+To read the setup guide [click here](Setup_Guide.md).
 
 ---
 
