@@ -1,5 +1,7 @@
 # Algorithm
 
+> **_Important:_** The math in this is not one-to-one with the code. The code is just an implementation of the algorithm which is more inclusive.
+
 Details for the algorithm is here. Here is [math version](Math.md) if you think you can handle that.
 
 $$
