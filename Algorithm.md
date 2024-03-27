@@ -13,7 +13,7 @@ $$
 $$
 
 $$
-\mathbb N^{< a} = \{n \in \mathbb N : n < a\} = \{0, \cdots, a - 1\}
+\mathbb N^{< a} = \\{ n \in \mathbb N : n < a\\} = \\{0, \cdots, a - 1 \\}
 $$
 
 > ***Note:*** Every indexing in this page is done zero-indexed. This includes string indices, matrix indices and vector indices.
