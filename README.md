@@ -1,6 +1,6 @@
 ![](logo.png)
 
-# $\text{\textbf{\color{#007FFF}FOURCE}: \textbf{\color{#007FFF}Four}ier based \textbf{\color{#007FFF}C}omplex \textbf{\color{#007FFF}E}ncryption}$
+# $\text{\textbf{\color{#00daff}FOURCE}: \textbf{\color{#00daff}Four}ier based \textbf{\color{#00daff}C}omplex \textbf{\color{#00daff}E}ncryption}$
 
 A secure algorithm that uses both *Discrete Fourier Transformation* and *linear algebra*. Strong points of the algorithm include:
 
