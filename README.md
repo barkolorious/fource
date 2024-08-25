@@ -1,4 +1,4 @@
-![](assets/logo2.png)
+![](assets/logo3.png)
 
 A secure algorithm that uses both *Discrete Fourier Transformation* and *linear algebra*. Strong points of the algorithm include:
 
