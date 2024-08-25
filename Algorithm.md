@@ -57,7 +57,7 @@ s_m(n) = \left\\{ \begin{array}{ccl}
 \end{array} \right.
 $$
 
-> ***Note 1***: $\%$ operator denotes the modulo operation. 
+> ***Note 1***: $\\%$ operator denotes the modulo operation. 
 
 > ***Note 2***: $|m|$ operator denotes the length of $m$.
 
