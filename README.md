@@ -1,6 +1,4 @@
-![](logo.png)
-
-# $\text{\textbf{\color{#00daff}FOURCE}: \textbf{\color{#00daff}Four}{\color{#005d99}ier based }\textbf{\color{#00daff}C}{\color{#005d99}omplex }\textbf{\color{#00daff}E}{\color{#005d99}ncryption}}$
+![](assets/logo2.png)
 
 A secure algorithm that uses both *Discrete Fourier Transformation* and *linear algebra*. Strong points of the algorithm include:
 
