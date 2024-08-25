@@ -5,7 +5,6 @@
 #include <iomanip>
 #include <fstream>
 
-
 class fource{
   friend std::ostream &operator<<(std::ostream&, const fource&);
   friend std::istream &operator>>(std::istream&, fource&);
