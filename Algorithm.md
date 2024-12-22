@@ -13,34 +13,34 @@ $$
 $$
 
 $$
-\mathbb N^{< a} = \\{ n \in \mathbb N : n < a\\} = \\{0, \cdots, a - 1 \\}
+\mathcal{N}^{< a} = \\{ n \in \mathcal N : n < a\\} = \\{0, \cdots, a - 1 \\}
 $$
 
 > ***Note:*** Every indexing in this page is done zero-indexed. This includes string indices, matrix indices and vector indices.
 
 ## Producing a Key
 
-1. Let $N$ be a power of $2$ such that $N$ is bigger than the length of the longest data that’ll be encrypted.
-2. Create $N$ functions from $\mathbb N^{< N}$ to $\mathbb C$ ($f_0, f_1, \cdots, f_{N - 1}$). There is no need for a rule for these functions (and we recommend that there isn't any).
+1. Choose $N$ to be a power of $2$.
+2. Create $N$ sequences ($f_0, f_1, \cdots, f_{N - 1}$) s.t.  $\forall i, j:  \in \mathbb C$. There is no need for a closed-form formula (and we recommend that there aren't any).
 3. Define $F_0, F_1, \cdots, F_{N - 1}$ with the Discrete Fourier Transform of $f_0, f_1, \cdots, f_{N - 1}$.
 
 $$
-F_i(k) = \mathrm{DFT}[f_i] (k) \ \ \small (i \in \mathbb N^{< N})
+F_i = \mathrm{DFT}\\{f_i\\} \ \ \small (i \in \mathbb N^{< N})
 $$
 
 4. Create a key matrix $\textbf A$ with the rule:
 
 $$
 \textbf A = \left[ \begin{array}{cccc}
-	F_0(0)   & F_1(0)   & \cdots & F_{N - 1}(0)     \\
-	F_0(1)   & F_1(1)   & \cdots & F_{N - 1}(1)     \\
-	\vdots   & \vdots   & \ddots & \vdots           \\
-	F_0(N-1) & F_1(N-1) & \cdots & F_{N - 1}(N - 1) \\
+	F_{0,0}   & F_{1,0}   & \cdots & F_{N-1,0}   \\
+	F_{0,1}   & F_{1,1}   & \cdots & F_{N-1,1}   \\
+	\vdots    & \vdots    & \ddots & \vdots      \\
+	F_{0,N-1} & F_{1,N-1} & \cdots & F_{N-1,N-1} \\
 \end{array} \right]
 $$
 
 $$
-\textbf A_{i,j} = F_j(i) = \mathrm{DFT}[f_j] (i) \ \ \small (i,j \in \mathbb N^{< N})
+\textbf A_{i,j} = F_{j,i} = (\mathrm{DFT}\\{f_j\\})_i \ \ \small (i,j \in \mathcal N^{< N})
 $$
 
 5. Calculate $\textbf A^{-1}$ using Gauss-Jordan Method.
